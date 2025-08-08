@@ -5,52 +5,108 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Your Name | Portfolio</title>
   <style>
+    /* Default light theme */
     body {
       font-family: Arial, sans-serif;
       max-width: 900px;
       margin: auto;
       padding: 20px;
-      background: #f9f9f9;
+      background-color: #f9f9f9;
       color: #333;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
+
+    /* Dark theme */
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    header, section, footer {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-mode header,
+    body.dark-mode section,
+    body.dark-mode footer {
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+    }
+
+    /* Links */
+    a {
+      color: #0077cc;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-mode a {
+      color: #66aaff;
+    }
+
+    /* Button style */
+    .toggle-button {
+      cursor: pointer;
+      background: #0077cc;
+      border: none;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .toggle-button:hover {
+      background: #005fa3;
+    }
+
+    /* Layout & typography */
     header {
       text-align: center;
       padding-bottom: 20px;
     }
+
     h1 {
       margin-bottom: 5px;
     }
+
     nav a {
       margin: 0 10px;
       text-decoration: none;
-      color: #0077cc;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
+
     section {
       margin-bottom: 40px;
     }
+
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
     }
+
     .project-card {
       background: white;
       padding: 15px;
       border-radius: 6px;
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
+
+    body.dark-mode .project-card {
+      background-color: #2a2a2a;
+      color: #e0e0e0;
+      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    }
+
     .project-card h3 {
       margin-top: 0;
     }
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      color: #777;
-      margin-top: 40px;
-    }
+
     a.button {
       display: inline-block;
       padding: 8px 15px;
@@ -59,13 +115,28 @@
       border-radius: 4px;
       text-decoration: none;
       margin-top: 10px;
+      transition: background 0.3s ease;
     }
+
     a.button:hover {
       background: #005fa3;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+      margin-top: 40px;
+    }
+
+    body.dark-mode footer {
+      color: #aaa;
     }
   </style>
 </head>
 <body>
+
+  <button id="darkModeToggle" class="toggle-button">Toggle Dark Mode</button>
 
   <header>
     <h1>Your Name</h1>
@@ -113,6 +184,27 @@
     <p>© 2025 Your Name. All rights reserved.</p>
   </footer>
 
+  <script>
+    const toggleButton = document.getElementById('darkModeToggle');
+    const body = document.body;
+
+    // Load saved theme from localStorage, if any
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+    }
+
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+
 </body>
 </html>
+
 
