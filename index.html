@@ -1,1 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name | Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: #f9f9f9;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      padding-bottom: 20px;
+    }
+    h1 {
+      margin-bottom: 5px;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #0077cc;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .project-card {
+      background: white;
+      padding: 15px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .project-card h3 {
+      margin-top: 0;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #777;
+      margin-top: 40px;
+    }
+    a.button {
+      display: inline-block;
+      padding: 8px 15px;
+      background: #0077cc;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-top: 10px;
+    }
+    a.button:hover {
+      background: #005fa3;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Your Name</h1>
+    <p>Software Developer | Data Enthusiast | Designer</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hi! I’m a passionate developer focused on creating clean, user-friendly
+      web and software solutions. I love working with JavaScript, Python, and
+      data science tools to build projects that solve real problems.
+    </p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <h3>Project One</h3>
+        <p>A brief description of this project and what technologies you used.</p>
+        <a class="button" href="https://github.com/yourusername/project-one" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Project Two</h3>
+        <p>Short summary about this project and why it’s cool.</p>
+        <a class="button" href="https://github.com/yourusername/project-two" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+      <!-- Add more projects as needed -->
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>You can reach me via email at <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+    <!-- For a working form, you can integrate with Formspree or other services -->
+  </section>
+
+  <footer>
+    <p>© 2025 Your Name. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
 
