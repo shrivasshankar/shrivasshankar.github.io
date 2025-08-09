@@ -7,7 +7,6 @@
   <link rel="manifest" href="favicon_io/site.webmanifest">
   <link rel="shortcut icon" href="favicon_io/favicon.ico" type="image/x-icon">
 
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shrivas Shankar  | Portfolio</title>
@@ -94,6 +93,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
+      align-items: stretch; /* Equal height in each row */
     }
 
     .project-card {
@@ -102,6 +102,8 @@
       border-radius: 6px;
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
       transition: background-color 0.3s ease, color 0.3s ease;
+      display: flex;
+      flex-direction: column; /* Stack title, text, button */
     }
 
     body.dark-mode .project-card {
@@ -114,6 +116,10 @@
       margin-top: 0;
     }
 
+    .project-card p {
+      flex-grow: 1; /* Makes text fill space so button aligns at bottom */
+    }
+
     a.button {
       display: inline-block;
       padding: 8px 15px;
@@ -123,6 +129,7 @@
       text-decoration: none;
       margin-top: 10px;
       transition: background 0.3s ease;
+      align-self: flex-start;
     }
 
     a.button:hover {
@@ -177,14 +184,12 @@
           minutes played, assists, rebounds, steals, blocks, turnovers, and shooting attempts/makes.</p>
         <a class="button" href="https://github.com/shrivasshankar/NBAMultilayerPerceptron" target="_blank" rel="noopener noreferrer">View on GitHub</a>
       </div>
-      <!-- Add more projects as needed -->
     </div>
   </section>
 
   <section id="contact">
     <h2>Contact Me</h2>
     <p>You can reach me via email at <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-    <!-- For a working form, you can integrate with Formspree or other services -->
   </section>
 
   <footer>
@@ -213,5 +218,3 @@
 
 </body>
 </html>
-
-
