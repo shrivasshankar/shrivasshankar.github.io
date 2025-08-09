@@ -85,15 +85,21 @@
       text-decoration: underline;
     }
 
+    /* Remove vertical gaps between sections */
     section {
-      padding: 40px 60px;
+      padding: 20px 60px;
+      margin: 0;
+    }
+
+    section h2 {
+      margin-top: 0;
     }
 
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      align-items: stretch; /* Equal height in each row */
+      align-items: stretch;
     }
 
     .project-card {
@@ -103,7 +109,7 @@
       box-shadow: 0 0 5px rgba(0,0,0,0.1);
       transition: background-color 0.3s ease, color 0.3s ease;
       display: flex;
-      flex-direction: column; /* Stack title, text, button */
+      flex-direction: column;
     }
 
     body.dark-mode .project-card {
@@ -117,7 +123,7 @@
     }
 
     .project-card p {
-      flex-grow: 1; /* Makes text fill space so button aligns at bottom */
+      flex-grow: 1;
     }
 
     a.button {
@@ -140,7 +146,7 @@
       text-align: center;
       font-size: 0.9em;
       color: #777;
-      margin-top: 40px;
+      margin-top: 20px;
     }
 
     body.dark-mode footer {
@@ -180,7 +186,7 @@
       </div>
       <div class="project-card">
         <h3>Multilayer Perceptron Model</h3>
-        <p>Using an NBA dataset I made a multiplayer perceptron model to predict a player plays above average in points based of
+        <p>Using an NBA dataset I made a multiplayer perceptron model to predict a player plays above average in points based off
           minutes played, assists, rebounds, steals, blocks, turnovers, and shooting attempts/makes.</p>
         <a class="button" href="https://github.com/shrivasshankar/NBAMultilayerPerceptron" target="_blank" rel="noopener noreferrer">View on GitHub</a>
       </div>
@@ -200,7 +206,6 @@
     const toggleButton = document.getElementById('darkModeToggle');
     const body = document.body;
 
-    // Load saved theme from localStorage, if any
     if (localStorage.getItem('theme') === 'dark') {
       body.classList.add('dark-mode');
     }
