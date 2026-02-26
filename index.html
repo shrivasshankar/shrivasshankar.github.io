@@ -56,6 +56,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 70px;
     }
 
     body {
@@ -397,44 +398,21 @@
       color: var(--accent);
     }
 
-    /* ── Experience ── */
-    .timeline {
-      position: relative;
-      padding-left: 32px;
+    /* ── Research ── */
+    .research-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: all 0.3s ease;
     }
 
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 6px;
-      top: 8px;
-      bottom: 8px;
-      width: 2px;
-      background: var(--border);
+    .research-card:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow-md);
     }
 
-    .timeline-item {
-      position: relative;
-      margin-bottom: 40px;
-    }
-
-    .timeline-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: -32px;
-      top: 6px;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 3px solid var(--bg-primary);
-      z-index: 1;
-    }
-
-    .timeline-header {
+    .research-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -443,35 +421,35 @@
       margin-bottom: 8px;
     }
 
-    .timeline-role {
+    .research-role {
       font-size: 1.1rem;
       font-weight: 600;
     }
 
-    .timeline-company {
+    .research-org {
       color: var(--accent);
       font-weight: 500;
       font-size: 0.95rem;
     }
 
-    .timeline-location {
+    .research-location {
       color: var(--text-muted);
       font-size: 0.85rem;
     }
 
-    .timeline-date {
+    .research-date {
       font-family: var(--mono);
       font-size: 0.78rem;
       color: var(--text-muted);
       white-space: nowrap;
     }
 
-    .timeline-bullets {
+    .research-bullets {
       list-style: none;
       margin-top: 12px;
     }
 
-    .timeline-bullets li {
+    .research-bullets li {
       position: relative;
       padding-left: 18px;
       margin-bottom: 8px;
@@ -479,7 +457,7 @@
       font-size: 0.92rem;
     }
 
-    .timeline-bullets li::before {
+    .research-bullets li::before {
       content: '';
       position: absolute;
       left: 0;
@@ -487,7 +465,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: var(--border);
+      background: var(--accent);
     }
 
     /* ── Projects ── */
@@ -708,7 +686,7 @@
         flex-direction: column;
       }
 
-      .timeline-header {
+      .research-header {
         flex-direction: column;
       }
     }
@@ -738,7 +716,7 @@
       <div class="nav-links" id="navLinks">
         <a href="#about">About</a>
         <a href="#education">Education</a>
-        <a href="#experience">Experience</a>
+        <a href="#research">Research</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </div>
@@ -860,65 +838,26 @@
     </div>
   </section>
 
-  <!-- Experience -->
-  <section class="section" id="experience">
+  <!-- Research -->
+  <section class="section" id="research">
     <div class="fade-in">
-      <p class="section-label">03 / Experience</p>
-      <h2 class="section-title">Experience</h2>
-      <div class="timeline">
-        <!-- UW Research -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <div>
-              <div class="timeline-role">Undergraduate Research Assistant</div>
-              <div class="timeline-company">University of Wisconsin&ndash;Madison &middot; Multi-Agent Systems</div>
-              <div class="timeline-location">Madison, WI</div>
-            </div>
-            <span class="timeline-date">Jan 2026 &ndash; Present</span>
+      <p class="section-label">03 / Research</p>
+      <h2 class="section-title">Research</h2>
+      <div class="research-card">
+        <div class="research-header">
+          <div>
+            <div class="research-role">Undergraduate Research Assistant</div>
+            <div class="research-org">University of Wisconsin&ndash;Madison &middot; Multi-Agent Systems</div>
+            <div class="research-location">Madison, WI</div>
           </div>
-          <ul class="timeline-bullets">
-            <li>Participating in a student research group focused on multi-agent reinforcement learning and autonomous system coordination.</li>
-            <li>Implementing adversarial training, DQN, and cooperative RL algorithms for simulated environments and board game scenarios.</li>
-            <li>Building experimental pipelines to evaluate performance, convergence, and scalability of multi-agent strategies.</li>
-            <li>Collaborating weekly with peers and faculty to explore applications in autonomous vehicles, drones, and competitive games.</li>
-          </ul>
+          <span class="research-date">Jan 2026 &ndash; Present</span>
         </div>
-
-        <!-- ICICLE -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <div>
-              <div class="timeline-role">Software Developer</div>
-              <div class="timeline-company">NSF ICICLE AI Institute</div>
-              <div class="timeline-location">Remote, Columbus, OH</div>
-            </div>
-            <span class="timeline-date">Apr 2025 &ndash; Present</span>
-          </div>
-          <ul class="timeline-bullets">
-            <li>Refactored Python preprocessing pipelines for the Food Equity Access Simulation Technology (FEAST), improving performance by 25%.</li>
-            <li>Reduced environment setup time by 50% through dependency and workflow optimization.</li>
-            <li>Collaborated with UW&ndash;Madison and Ohio State on agent-based modeling systems; project selected for ICICLE Conference 2025.</li>
-          </ul>
-        </div>
-
-        <!-- Farm2Facts -->
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-header">
-            <div>
-              <div class="timeline-role">Software Development Intern</div>
-              <div class="timeline-company">Farm2Facts</div>
-              <div class="timeline-location">Madison, WI</div>
-            </div>
-            <span class="timeline-date">Oct 2024 &ndash; May 2025</span>
-          </div>
-          <ul class="timeline-bullets">
-            <li>Conducted SQL and R bot-detection audit distinguishing real vs. automated users; presented at the 2025 Undergraduate Symposium to Chancellor Jennifer Mnookin.</li>
-            <li>Developed a GIS-enabled full-stack web platform supporting 1,000+ users using Vue.js and backend APIs.</li>
-          </ul>
-        </div>
+        <ul class="research-bullets">
+          <li>Researching multi-agent reinforcement learning and autonomous system coordination.</li>
+          <li>Implementing adversarial training, DQN, and cooperative RL algorithms for simulated environments and board game scenarios.</li>
+          <li>Building experimental pipelines to evaluate performance, convergence, and scalability of multi-agent strategies.</li>
+          <li>Collaborating weekly with peers and faculty to explore applications in autonomous vehicles, drones, and competitive games.</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -937,8 +876,7 @@
             <span class="project-type">Full-Stack App</span>
             <h3 class="project-name">MadStorage</h3>
             <p class="project-desc">
-              A peer-to-peer storage marketplace exclusively for UW&ndash;Madison students. Students can browse and request
-              available spaces from hosts listing spare rooms, closets, or storage areas&mdash;priced by an ML recommendation model.
+              A peer-to-peer storage marketplace for UW&ndash;Madison students with ML-powered pricing recommendations.
             </p>
             <div class="project-tech">
               <span class="tech-tag">React Native</span>
@@ -946,9 +884,9 @@
               <span class="tech-tag">Machine Learning</span>
             </div>
             <div class="project-links">
-              <a class="project-link" href="https://discord.com/channels/1373867778058096680/1373867778058096683/1476410722329301064" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm7 0v6h-2V6.414l-7.293 7.293-1.414-1.414L17.586 5H15V3h6z"/></svg>
-                Community
+              <a class="project-link" href="https://youtu.be/ZFEIIM4YCR4" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                Demo Video
               </a>
             </div>
           </div>
@@ -956,12 +894,12 @@
 
         <!-- NBA Clustering -->
         <div class="project-card">
+          <img src="nba-clustering-screenshot.png" alt="NBA Player Archetype Clustering" class="project-image">
           <div class="project-body">
             <span class="project-type">Machine Learning</span>
             <h3 class="project-name">NBA Player Archetype Clustering</h3>
             <p class="project-desc">
-              Built an unsupervised ML pipeline using autoencoders, k-means, PCA, and UMAP on 200,000+ NBA game logs.
-              Learned latent player archetypes and created interactive 3D visualizations of player representations.
+              Unsupervised ML pipeline using autoencoders, k-means, and UMAP on 200K+ NBA game logs to discover player archetypes.
             </p>
             <div class="project-tech">
               <span class="tech-tag">Python</span>
@@ -989,8 +927,7 @@
             <span class="project-type">Deep Learning</span>
             <h3 class="project-name">NBA Multilayer Perceptron</h3>
             <p class="project-desc">
-              Designed a multilayer perceptron to predict whether an NBA player performs above average in points,
-              using features like minutes played, assists, rebounds, steals, blocks, turnovers, and shooting stats.
+              MLP model predicting above-average NBA player performance from game stats like assists, rebounds, and shooting.
             </p>
             <div class="project-tech">
               <span class="tech-tag">Python</span>
@@ -1009,12 +946,12 @@
 
         <!-- FEAST -->
         <div class="project-card">
+          <img src="feast-screenshot.png" alt="FEAST Simulation" class="project-image">
           <div class="project-body">
             <span class="project-type">Research Software</span>
             <h3 class="project-name">FEAST &ndash; Food Equity Access Simulation</h3>
             <p class="project-desc">
-              Contributed to the Food Equity Access Simulation Technology at the NSF ICICLE AI Institute&mdash;an
-              agent-based model evaluating food accessibility scores for communities. Optimized preprocessing pipelines and deployment workflows.
+              Agent-based simulation evaluating community food accessibility at the NSF ICICLE AI Institute.
             </p>
             <div class="project-tech">
               <span class="tech-tag">Python</span>
@@ -1032,12 +969,12 @@
 
         <!-- Farm2Facts -->
         <div class="project-card">
+          <img src="farm2facts-screenshot.png" alt="Farm2Facts" class="project-image">
           <div class="project-body">
             <span class="project-type">Full-Stack &middot; Data Analysis</span>
             <h3 class="project-name">Farm2Facts Platform</h3>
             <p class="project-desc">
-              Developed a GIS-enabled full-stack web platform supporting 1,000+ users. Conducted a SQL and R
-              bot-detection audit and presented findings at the 2025 Undergraduate Symposium to Chancellor Mnookin.
+              GIS-enabled web platform supporting 1,000+ users with bot-detection auditing in SQL and R.
             </p>
             <div class="project-tech">
               <span class="tech-tag">Vue.js</span>
