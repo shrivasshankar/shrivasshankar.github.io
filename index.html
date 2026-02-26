@@ -9,216 +9,1126 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shrivas Shankar  | Portfolio</title>
+  <title>Shrivas Shankar | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    /* Default light theme */
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: auto;
-      padding: 25px;
-      background-color: #f9f9f9;
-      color: #333;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    /* Dark theme */
-    body.dark-mode {
-      background-color: #121212;
-      color: #e0e0e0;
-    }
-
-    header, section, footer {
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    body.dark-mode header,
-    body.dark-mode section,
-    body.dark-mode footer {
-      background-color: #1e1e1e;
-      color: #e0e0e0;
-    }
-
-    /* Links */
-    a {
-      color: #0077cc;
-      transition: color 0.3s ease;
-    }
-
-    body.dark-mode a {
-      color: #66aaff;
-    }
-
-    /* Button style */
-    .toggle-button {
-      cursor: pointer;
-      background: #0077cc;
-      border: none;
-      color: white;
-      padding: 8px 15px;
-      border-radius: 4px;
-      margin-bottom: 20px;
-      font-size: 1rem;
-      transition: background 0.3s ease;
-    }
-
-    .toggle-button:hover {
-      background: #005fa3;
-    }
-
-    /* Layout & typography */
-    header {
-      text-align: center;
-      padding: 40px 60px;
-    }
-
-    h1 {
-      margin-bottom: 5px;
-    }
-
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* Remove vertical gaps between sections */
-    section {
-      padding: 20px 60px;
+    *, *::before, *::after {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    section h2 {
-      margin-top: 0;
+    :root {
+      --bg-primary: #fafafa;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --text-primary: #1a1a2e;
+      --text-secondary: #555;
+      --text-muted: #888;
+      --accent: #c5050c;
+      --accent-hover: #9b0000;
+      --accent-light: rgba(197, 5, 12, 0.08);
+      --border: #e8e8e8;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
+      --radius: 12px;
+      --mono: 'JetBrains Mono', monospace;
     }
 
-    .projects {
+    body.dark-mode {
+      --bg-primary: #0f0f13;
+      --bg-secondary: #1a1a22;
+      --bg-card: #1e1e28;
+      --text-primary: #e8e8f0;
+      --text-secondary: #a0a0b0;
+      --text-muted: #666680;
+      --accent: #e05058;
+      --accent-hover: #ff6b73;
+      --accent-light: rgba(224, 80, 88, 0.1);
+      --border: #2a2a36;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+      --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
+      --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      transition: background-color 0.4s ease, color 0.4s ease;
+      overflow-x: hidden;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: background 0.4s ease, border-color 0.4s ease;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 30px;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      cursor: pointer;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* ── Sections ── */
+    .section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 30px;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 40px;
+      letter-spacing: -0.03em;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 70px;
+    }
+
+    .hero-content {
+      max-width: 700px;
+    }
+
+    .hero-greeting {
+      font-family: var(--mono);
+      font-size: 0.95rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .hero-name {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      background: var(--bg-secondary);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ── About ── */
+    .about-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      align-items: stretch;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .highlight-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .highlight-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .highlight-number {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+
+    .highlight-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ── Education ── */
+    .education-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: all 0.3s ease;
+    }
+
+    .education-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .edu-school {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .edu-degree {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .edu-date {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 4px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .edu-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+      margin-bottom: 18px;
+    }
+
+    .badge {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .edu-section-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      margin-top: 16px;
+    }
+
+    .coursework-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .coursework-tag {
+      font-size: 0.78rem;
+      padding: 5px 12px;
+      border-radius: 6px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+
+    .coursework-tag:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── Experience ── */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -32px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--bg-primary);
+      z-index: 1;
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .timeline-role {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .timeline-company {
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .timeline-location {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .timeline-date {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .timeline-bullets {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .timeline-bullets li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+    }
+
+    .timeline-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+
+    /* ── Projects ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
     }
 
     .project-card {
-      background: white;
-      padding: 15px;
-      border-radius: 6px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-      transition: background-color 0.3s ease, color 0.3s ease;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
     }
 
-    body.dark-mode .project-card {
-      background-color: #2a2a2a;
-      color: #e0e0e0;
-      box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
     }
 
-    .project-card h3 {
-      margin-top: 0;
+    .project-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
     }
 
-    .project-card p {
+    .project-body {
+      padding: 24px;
       flex-grow: 1;
+      display: flex;
+      flex-direction: column;
     }
 
-    a.button {
-      display: inline-block;
-      padding: 8px 15px;
-      background: #0077cc;
-      color: white;
+    .project-type {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .project-name {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .project-desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      flex-grow: 1;
+      margin-bottom: 16px;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .tech-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 3px 10px;
       border-radius: 4px;
+      background: var(--accent-light);
+      color: var(--accent);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .project-link {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
       text-decoration: none;
-      margin-top: 10px;
-      transition: background 0.3s ease;
-      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.2s ease;
     }
 
-    a.button:hover {
-      background: #005fa3;
+    .project-link:hover {
+      color: var(--accent);
     }
 
+    .project-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ── Contact ── */
+    .contact-content {
+      text-align: center;
+      max-width: 550px;
+      margin: auto;
+    }
+
+    .contact-content p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      background: var(--bg-card);
+      transition: all 0.3s ease;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .contact-link svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ── Footer ── */
     footer {
       text-align: center;
-      font-size: 0.9em;
-      color: #777;
-      margin-top: 20px;
+      padding: 30px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
     }
 
-    body.dark-mode footer {
-      color: #aaa;
+    /* ── Scroll animations ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 16px 30px;
+        gap: 16px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero-name {
+        font-size: 2.2rem;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-highlights {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .edu-header {
+        flex-direction: column;
+      }
+
+      .timeline-header {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-highlights {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-links {
+        flex-direction: column;
+      }
+
+      .hero-links a {
+        text-align: center;
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
 
-  <button id="darkModeToggle" class="toggle-button">Toggle Dark Mode</button>
-
-  <header>
-    <h1>Shrivas Shankar</h1>
-    <p>Exploring the foundations of machine learning to create models that turn data into meaningful insights.</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      Hi! My name is Shrivas I am an Computer and Data Science student at the University of Wisconsin-Madison this is my portfolio page,
-      I love working with Python and R to explore machine learning tools and create statistical models that solve real problems in the world. 
-    </p>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="project-card">
-        <h3>NBA Player Archetype Clustering</h3>
-        <p>Developed an unsupervised machine learning pipeline to identify player archetypes from 200,000+ NBA game logs using autoencoders and k-means clustering.</p>
-        <a class="button" href="https://shrivasshankar.github.io/nba-clustering/" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">shrivas<span>.</span></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
       </div>
-      <div class="project-card">
-        <h3>Multilayer Perceptron Model</h3>
-        <p>Using an NBA dataset I made a multiplayer perceptron model to predict a player plays above average in points based off
-          minutes played, assists, rebounds, steals, blocks, turnovers, and shooting attempts/makes.</p>
-        <a class="button" href="https://github.com/shrivasshankar/NBAMultilayerPerceptron" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button id="darkModeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <span id="themeIcon">&#9790;</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="section hero" id="hero">
+    <div class="hero-content">
+      <p class="hero-greeting">Hi, my name is</p>
+      <h1 class="hero-name">Shrivas Shankar</h1>
+      <p class="hero-desc">
+        Computer Science &amp; Data Science student at UW&ndash;Madison. I build machine learning systems,
+        research multi-agent intelligence, and develop software that turns data into real-world impact.
+      </p>
+      <div class="hero-links">
+        <a class="btn-primary" href="#projects">View My Work</a>
+        <a class="btn-outline" href="https://github.com/shrivasshankar" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a class="btn-outline" href="https://linkedin.com/in/shrivas-shankar" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
       </div>
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>You can reach me via email at <a href="sshankar29@wisc.edu">sshankar29@wisc.edu</a></p>
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="fade-in">
+      <p class="section-label">01 / About</p>
+      <h2 class="section-title">About Me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I'm a Computer Science and Data Science student at the University of Wisconsin&ndash;Madison (Class of 2027),
+            recognized as a CAE and URS Scholar. My work sits at the intersection of machine learning, multi-agent systems,
+            and data-driven software engineering.
+          </p>
+          <p>
+            From building unsupervised ML pipelines on NBA data to contributing to NSF-funded research at the ICICLE AI Institute,
+            I thrive on projects that combine rigorous analysis with real-world utility. I'm currently researching
+            multi-agent reinforcement learning&mdash;exploring how autonomous agents can cooperate and compete in complex environments.
+          </p>
+          <p>
+            When I'm not coding, you'll find me exploring new datasets, reading about optimization theory,
+            or building tools that help fellow students.
+          </p>
+        </div>
+        <div class="about-highlights">
+          <div class="highlight-card">
+            <div class="highlight-number">3+</div>
+            <div class="highlight-label">Research & Industry Roles</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-number">200K+</div>
+            <div class="highlight-label">Data Points Analyzed</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-number">1,000+</div>
+            <div class="highlight-label">Platform Users</div>
+          </div>
+          <div class="highlight-card">
+            <div class="highlight-number">25%</div>
+            <div class="highlight-label">Pipeline Performance Gain</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education">
+    <div class="fade-in">
+      <p class="section-label">02 / Education</p>
+      <h2 class="section-title">Education</h2>
+      <div class="education-card">
+        <div class="edu-header">
+          <div>
+            <div class="edu-school">University of Wisconsin&ndash;Madison</div>
+            <div class="edu-degree">B.S. in Computer Science &amp; Data Science</div>
+          </div>
+          <span class="edu-date">Class of 2027</span>
+        </div>
+        <div class="edu-badges">
+          <span class="badge">CAE Scholar</span>
+          <span class="badge">URS Scholar</span>
+        </div>
+        <div class="edu-section-title">Academic Focus</div>
+        <div class="coursework-tags" style="margin-bottom: 16px;">
+          <span class="coursework-tag">Machine Learning</span>
+          <span class="coursework-tag">Multi-Agent Systems</span>
+          <span class="coursework-tag">Simulation &amp; Optimization</span>
+          <span class="coursework-tag">Statistical Modeling</span>
+        </div>
+        <div class="edu-section-title">Relevant Coursework</div>
+        <div class="coursework-tags">
+          <span class="coursework-tag">Computer Architecture</span>
+          <span class="coursework-tag">Data Structures &amp; Algorithms</span>
+          <span class="coursework-tag">Machine Learning</span>
+          <span class="coursework-tag">Artificial Intelligence</span>
+          <span class="coursework-tag">Data Science Modeling</span>
+          <span class="coursework-tag">Data Science Programming</span>
+          <span class="coursework-tag">Statistical Visualization</span>
+          <span class="coursework-tag">Discrete Mathematics</span>
+          <span class="coursework-tag">Linear Algebra</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="section" id="experience">
+    <div class="fade-in">
+      <p class="section-label">03 / Experience</p>
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        <!-- UW Research -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Undergraduate Research Assistant</div>
+              <div class="timeline-company">University of Wisconsin&ndash;Madison &middot; Multi-Agent Systems</div>
+              <div class="timeline-location">Madison, WI</div>
+            </div>
+            <span class="timeline-date">Jan 2026 &ndash; Present</span>
+          </div>
+          <ul class="timeline-bullets">
+            <li>Participating in a student research group focused on multi-agent reinforcement learning and autonomous system coordination.</li>
+            <li>Implementing adversarial training, DQN, and cooperative RL algorithms for simulated environments and board game scenarios.</li>
+            <li>Building experimental pipelines to evaluate performance, convergence, and scalability of multi-agent strategies.</li>
+            <li>Collaborating weekly with peers and faculty to explore applications in autonomous vehicles, drones, and competitive games.</li>
+          </ul>
+        </div>
+
+        <!-- ICICLE -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Software Developer</div>
+              <div class="timeline-company">NSF ICICLE AI Institute</div>
+              <div class="timeline-location">Remote, Columbus, OH</div>
+            </div>
+            <span class="timeline-date">Apr 2025 &ndash; Present</span>
+          </div>
+          <ul class="timeline-bullets">
+            <li>Refactored Python preprocessing pipelines for the Food Equity Access Simulation Technology (FEAST), improving performance by 25%.</li>
+            <li>Reduced environment setup time by 50% through dependency and workflow optimization.</li>
+            <li>Collaborated with UW&ndash;Madison and Ohio State on agent-based modeling systems; project selected for ICICLE Conference 2025.</li>
+          </ul>
+        </div>
+
+        <!-- Farm2Facts -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Software Development Intern</div>
+              <div class="timeline-company">Farm2Facts</div>
+              <div class="timeline-location">Madison, WI</div>
+            </div>
+            <span class="timeline-date">Oct 2024 &ndash; May 2025</span>
+          </div>
+          <ul class="timeline-bullets">
+            <li>Conducted SQL and R bot-detection audit distinguishing real vs. automated users; presented at the 2025 Undergraduate Symposium to Chancellor Jennifer Mnookin.</li>
+            <li>Developed a GIS-enabled full-stack web platform supporting 1,000+ users using Vue.js and backend APIs.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section" id="projects">
+    <div class="fade-in">
+      <p class="section-label">04 / Projects</p>
+      <h2 class="section-title">Projects</h2>
+      <div class="projects-grid">
+
+        <!-- MadStorage -->
+        <div class="project-card">
+          <img src="madstorage-screenshot.png" alt="MadStorage App" class="project-image">
+          <div class="project-body">
+            <span class="project-type">Full-Stack App</span>
+            <h3 class="project-name">MadStorage</h3>
+            <p class="project-desc">
+              A peer-to-peer storage marketplace exclusively for UW&ndash;Madison students. Students can browse and request
+              available spaces from hosts listing spare rooms, closets, or storage areas&mdash;priced by an ML recommendation model.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">React Native</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">Machine Learning</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://discord.com/channels/1373867778058096680/1373867778058096683/1476410722329301064" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm7 0v6h-2V6.414l-7.293 7.293-1.414-1.414L17.586 5H15V3h6z"/></svg>
+                Community
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- NBA Clustering -->
+        <div class="project-card">
+          <div class="project-body">
+            <span class="project-type">Machine Learning</span>
+            <h3 class="project-name">NBA Player Archetype Clustering</h3>
+            <p class="project-desc">
+              Built an unsupervised ML pipeline using autoencoders, k-means, PCA, and UMAP on 200,000+ NBA game logs.
+              Learned latent player archetypes and created interactive 3D visualizations of player representations.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">Scikit-learn</span>
+              <span class="tech-tag">UMAP</span>
+              <span class="tech-tag">Plotly</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://shrivasshankar.github.io/nba-clustering/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm7 0v6h-2V6.414l-7.293 7.293-1.414-1.414L17.586 5H15V3h6z"/></svg>
+                Live Demo
+              </a>
+              <a class="project-link" href="https://github.com/shrivasshankar/nba-clustering" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Multilayer Perceptron -->
+        <div class="project-card">
+          <div class="project-body">
+            <span class="project-type">Deep Learning</span>
+            <h3 class="project-name">NBA Multilayer Perceptron</h3>
+            <p class="project-desc">
+              Designed a multilayer perceptron to predict whether an NBA player performs above average in points,
+              using features like minutes played, assists, rebounds, steals, blocks, turnovers, and shooting stats.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">PyTorch</span>
+              <span class="tech-tag">Pandas</span>
+              <span class="tech-tag">NumPy</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/shrivasshankar/NBAMultilayerPerceptron" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- FEAST -->
+        <div class="project-card">
+          <div class="project-body">
+            <span class="project-type">Research Software</span>
+            <h3 class="project-name">FEAST &ndash; Food Equity Access Simulation</h3>
+            <p class="project-desc">
+              Contributed to the Food Equity Access Simulation Technology at the NSF ICICLE AI Institute&mdash;an
+              agent-based model evaluating food accessibility scores for communities. Optimized preprocessing pipelines and deployment workflows.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Agent-Based Modeling</span>
+              <span class="tech-tag">Tapis</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://icicle.osu.edu/cyberinfrastructure/software" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm7 0v6h-2V6.414l-7.293 7.293-1.414-1.414L17.586 5H15V3h6z"/></svg>
+                ICICLE Software Catalog
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Farm2Facts -->
+        <div class="project-card">
+          <div class="project-body">
+            <span class="project-type">Full-Stack &middot; Data Analysis</span>
+            <h3 class="project-name">Farm2Facts Platform</h3>
+            <p class="project-desc">
+              Developed a GIS-enabled full-stack web platform supporting 1,000+ users. Conducted a SQL and R
+              bot-detection audit and presented findings at the 2025 Undergraduate Symposium to Chancellor Mnookin.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">Vue.js</span>
+              <span class="tech-tag">SQL</span>
+              <span class="tech-tag">R</span>
+              <span class="tech-tag">GIS</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://farm2facts.org/" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M14 3v2H5v14h14v-9h2v10a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1h10zm7 0v6h-2V6.414l-7.293 7.293-1.414-1.414L17.586 5H15V3h6z"/></svg>
+                Farm2Facts.org
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="fade-in">
+      <p class="section-label">05 / Contact</p>
+      <h2 class="section-title" style="text-align:center;">Get In Touch</h2>
+      <div class="contact-content">
+        <p>
+          I'm always open to new opportunities, collaborations, and conversations about ML, multi-agent systems, or interesting data problems.
+        </p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:sshankar29@wisc.edu">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
+            sshankar29@wisc.edu
+          </a>
+          <a class="contact-link" href="https://github.com/shrivasshankar" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a class="contact-link" href="https://linkedin.com/in/shrivas-shankar" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 Shrivas Shankar. All rights reserved.</p>
+    <p>&copy; 2026 Shrivas Shankar. Built with care in Madison, WI.</p>
   </footer>
 
   <script>
     const toggleButton = document.getElementById('darkModeToggle');
+    const themeIcon = document.getElementById('themeIcon');
     const body = document.body;
+
+    function updateIcon() {
+      themeIcon.textContent = body.classList.contains('dark-mode') ? '\u2600' : '\u263E';
+    }
 
     if (localStorage.getItem('theme') === 'dark') {
       body.classList.add('dark-mode');
     }
+    updateIcon();
 
     toggleButton.addEventListener('click', () => {
       body.classList.toggle('dark-mode');
-
-      if (body.classList.contains('dark-mode')) {
-        localStorage.setItem('theme', 'dark');
-      } else {
-        localStorage.setItem('theme', 'light');
-      }
+      localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+      updateIcon();
     });
+
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 
 </body>
