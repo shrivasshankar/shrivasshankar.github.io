@@ -468,6 +468,33 @@
       background: var(--accent);
     }
 
+    /* ── Tech Stack ── */
+    .stack-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .stack-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 28px;
+      transition: all 0.3s ease;
+    }
+
+    .stack-item:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stack-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
     /* ── Projects ── */
     .projects-grid {
       display: grid;
@@ -714,6 +741,7 @@
     <div class="nav-inner">
       <a href="#" class="nav-logo">shrivas<span>.</span></a>
       <div class="nav-links" id="navLinks">
+        <a href="#stack">Stack</a>
         <a href="#research">Research</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
@@ -735,12 +763,11 @@
       <p class="hero-greeting">Hi, my name is</p>
       <h1 class="hero-name">Shrivas Shankar</h1>
       <p class="hero-desc">
-        I'm a Computer Science and Data Science student at the University of Wisconsin-Madison.
-        I love working with Python and machine learning to build things that actually solve problems,
+        I'm a CS and DS Student at UW-Madison.
+        I interested working to build things that actually solve problems,
         whether that's clustering NBA player archetypes, optimizing food access simulations, or
-        building a storage marketplace for students. Right now I'm researching multi-agent reinforcement
-        learning, figuring out how autonomous agents can learn to cooperate and compete in complex environments.
-        Outside of coding, I'm usually playing chess, collecting colognes, or at the gym.
+        building a storage marketplace for students. I primarily use Python, Java, SQL, PostgreSQL, and R. 
+        Outside of school I like watching the Bucks, Playing chess, and going to the gym. 
       </p>
       <div class="hero-links">
         <a class="btn-primary" href="#projects">View My Work</a>
@@ -756,10 +783,44 @@
     </div>
   </section>
 
+  <!-- Tech Stack -->
+  <section class="section" id="stack">
+    <div class="fade-in">
+      <p class="section-label">01 / Tech Stack</p>
+      <h2 class="section-title">Tech Stack</h2>
+      <div class="stack-grid">
+        <div class="stack-item">
+          <span class="stack-name">Python</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-name">Java</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-name">C</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-name">R</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-name">SQL</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-name">PostgreSQL</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-name">Docker</span>
+        </div>
+        <div class="stack-item">
+          <span class="stack-name">Tapis</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Research -->
   <section class="section" id="research">
     <div class="fade-in">
-      <p class="section-label">01 / Research</p>
+      <p class="section-label">02 / Research</p>
       <h2 class="section-title">Research</h2>
       <div class="research-card">
         <div class="research-header">
@@ -771,10 +832,7 @@
           <span class="research-date">Jan 2026 &ndash; Present</span>
         </div>
         <ul class="research-bullets">
-          <li>Training autonomous agents to cooperate and compete using deep reinforcement learning in adversarial and cooperative settings.</li>
-          <li>Implementing DQN, policy gradient, and multi-agent RL algorithms that learn strategic behavior in simulated environments and board games.</li>
-          <li>Engineering evaluation pipelines that benchmark convergence speed, scalability, and emergent coordination across agent populations.</li>
-          <li>Working toward real-world applications in autonomous vehicles, drone swarms, and competitive game-playing AI.</li>
+          <li>Working under Dr. Wu in reinforcement learning models</li>
         </ul>
       </div>
     </div>
@@ -783,7 +841,7 @@
   <!-- Projects -->
   <section class="section" id="projects">
     <div class="fade-in">
-      <p class="section-label">02 / Projects</p>
+      <p class="section-label">03 / Projects</p>
       <h2 class="section-title">Projects</h2>
       <div class="projects-grid">
 
@@ -869,7 +927,7 @@
   <!-- Contact -->
   <section class="section" id="contact">
     <div class="fade-in">
-      <p class="section-label">03 / Contact</p>
+      <p class="section-label">04 / Contact</p>
       <h2 class="section-title" style="text-align:center;">Get In Touch</h2>
       <div class="contact-content">
         <p>
