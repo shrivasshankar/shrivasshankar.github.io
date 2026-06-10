@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Stylized spruce: stacked LSM levels narrowing upward -->
+  <g>
+    <polygon points="100,18 128,62 72,62" fill="#52b788"/>
+    <polygon points="100,44 140,100 60,100" fill="#40916c"/>
+    <polygon points="100,74 154,142 46,142" fill="#2d6a4f"/>
+    <rect x="92" y="142" width="16" height="26" rx="3" fill="#1b4332"/>
+  </g>
+</svg>

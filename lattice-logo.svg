@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- Stylized HNSW graph: blue nodes with orange accents, flat style matching spruce-logo -->
+  <g stroke="#2d5f9e" stroke-width="3" fill="none">
+    <line x1="46" y1="64" x2="100" y2="38"/>
+    <line x1="100" y1="38" x2="156" y2="60"/>
+    <line x1="46" y1="64" x2="84" y2="106"/>
+    <line x1="156" y1="60" x2="84" y2="106"/>
+    <line x1="84" y1="106" x2="42" y2="148"/>
+    <line x1="84" y1="106" x2="132" y2="142"/>
+    <line x1="156" y1="60" x2="132" y2="142"/>
+    <line x1="42" y1="148" x2="132" y2="142"/>
+  </g>
+  <g>
+    <circle cx="100" cy="38" r="12" fill="#6ea8f7"/>
+    <circle cx="46" cy="64" r="10" fill="#4d8be0"/>
+    <circle cx="156" cy="60" r="10" fill="#4d8be0"/>
+    <circle cx="84" cy="106" r="14" fill="#ee7744"/>
+    <circle cx="42" cy="148" r="10" fill="#2d5f9e"/>
+    <circle cx="132" cy="142" r="12" fill="#1d3f6e" stroke="#ee7744" stroke-width="3"/>
+  </g>
+</svg>

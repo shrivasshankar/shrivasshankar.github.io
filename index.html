@@ -37,8 +37,8 @@
       --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
       --radius: 12px;
       --mono: 'JetBrains Mono', monospace;
-      --nav-bg: rgba(250, 250, 250, 0.75);
-      --glow: rgba(45, 106, 79, 0.14);
+      --nav-bg: rgba(250, 250, 250, 0.6);
+      --glow: rgba(45, 106, 79, 0.1);
     }
 
     body.dark-mode {
@@ -55,13 +55,40 @@
       --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
       --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
       --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
-      --nav-bg: rgba(10, 10, 10, 0.7);
-      --glow: rgba(82, 183, 136, 0.1);
+      --nav-bg: rgba(10, 10, 10, 0.5);
+      --glow: rgba(82, 183, 136, 0.07);
     }
 
     ::selection {
       background: var(--accent);
       color: #fff;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent);
+    }
+
+    #scrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+      z-index: 1001;
     }
 
     html {
@@ -87,8 +114,8 @@
       z-index: 1000;
       background: var(--nav-bg);
       border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
       transition: background 0.4s ease, border-color 0.4s ease;
     }
 
@@ -141,11 +168,13 @@
       transition: width 0.25s ease;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       color: var(--accent);
     }
 
-    .nav-links a:hover::after {
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
       width: 100%;
     }
 
@@ -211,6 +240,11 @@
       letter-spacing: -0.03em;
     }
 
+    .section-title::after {
+      content: '.';
+      color: var(--accent);
+    }
+
     /* ── Hero ── */
     .hero {
       position: relative;
@@ -223,13 +257,13 @@
     .hero::before {
       content: '';
       position: absolute;
-      top: 15%;
-      right: -120px;
-      width: 520px;
-      height: 520px;
+      top: -10%;
+      right: -240px;
+      width: 820px;
+      height: 820px;
       border-radius: 50%;
-      background: radial-gradient(circle, var(--glow), transparent 70%);
-      filter: blur(48px);
+      background: radial-gradient(circle, var(--glow), transparent 62%);
+      filter: blur(100px);
       pointer-events: none;
     }
 
@@ -534,6 +568,23 @@
       margin-bottom: 8px;
     }
 
+    .experience-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .experience-logo {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      object-fit: contain;
+      padding: 7px;
+    }
+
     .experience-role {
       font-size: 1.1rem;
       font-weight: 600;
@@ -698,7 +749,7 @@
     .project-card:hover {
       border-color: var(--accent);
       transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
+      box-shadow: var(--shadow-lg), 0 0 24px var(--accent-light);
     }
 
     .project-image {
@@ -860,6 +911,31 @@
       transform: translateY(0);
     }
 
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in.visible :is(.stack-item, .project-card, .experience-card, .opensource-card) {
+      animation: rise 0.45s ease backwards;
+    }
+
+    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(2) { animation-delay: 0.06s; }
+    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(3) { animation-delay: 0.12s; }
+    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(4) { animation-delay: 0.18s; }
+    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(5) { animation-delay: 0.24s; }
+    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(6) { animation-delay: 0.3s; }
+    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(7) { animation-delay: 0.36s; }
+    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(8) { animation-delay: 0.42s; }
+    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(9) { animation-delay: 0.48s; }
+    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(10) { animation-delay: 0.54s; }
+
     /* ── Responsive ── */
     @media (max-width: 900px) {
       .nav-links {
@@ -946,6 +1022,8 @@
   </style>
 </head>
 <body class="dark-mode">
+
+  <div id="scrollProgress"></div>
 
   <!-- Navigation -->
   <nav>
@@ -1054,24 +1132,30 @@
 
         <div class="experience-card">
           <div class="experience-header">
-            <div>
-              <div class="experience-role">Data Engineering Intern</div>
-              <div class="experience-org">American Family Insurance</div>
-              <div class="experience-location">Madison, Wisconsin &middot; Hybrid</div>
+            <div class="experience-left">
+              <img src="logo-amfam.png" alt="American Family Insurance" class="experience-logo">
+              <div>
+                <div class="experience-role">Data Engineering Intern</div>
+                <div class="experience-org">American Family Insurance</div>
+                <div class="experience-location">Madison, Wisconsin &middot; Hybrid</div>
+              </div>
             </div>
-            <span class="experience-date">May 2026 &ndash; Present</span>
+            <span class="experience-date">Fall 2026</span>
           </div>
-          <ul class="experience-bullets">
-            <li>Joining the data engineering team in fall 2026</li>
-          </ul>
+          <div class="edu-badges" style="margin-bottom:0;">
+            <span class="badge">Signed Offer</span>
+          </div>
         </div>
 
         <div class="experience-card">
           <div class="experience-header">
-            <div>
-              <div class="experience-role">Undergraduate Researcher (ADvanced Systems Laboratory)</div>
-              <div class="experience-org">UW&ndash;Madison CDIS</div>
-              <div class="experience-location">Madison, Wisconsin</div>
+            <div class="experience-left">
+              <img src="logo-uw.png" alt="University of Wisconsin&ndash;Madison" class="experience-logo">
+              <div>
+                <div class="experience-role">Undergraduate Researcher (ADvanced Systems Laboratory)</div>
+                <div class="experience-org">UW&ndash;Madison CDIS</div>
+                <div class="experience-location">Madison, Wisconsin</div>
+              </div>
             </div>
             <span class="experience-date">May 2026 &ndash; Present</span>
           </div>
@@ -1082,10 +1166,13 @@
 
         <div class="experience-card">
           <div class="experience-header">
-            <div>
-              <div class="experience-role">Software Developer</div>
-              <div class="experience-org">NSF ICICLE AI Institute</div>
-              <div class="experience-location">Columbus, Ohio &middot; Remote</div>
+            <div class="experience-left">
+              <img src="logo-icicle.png" alt="NSF ICICLE AI Institute" class="experience-logo" style="padding:0;object-fit:cover;">
+              <div>
+                <div class="experience-role">Software Developer</div>
+                <div class="experience-org">NSF ICICLE AI Institute</div>
+                <div class="experience-location">Columbus, Ohio &middot; Remote</div>
+              </div>
             </div>
             <span class="experience-date">Apr 2025 &ndash; Present</span>
           </div>
@@ -1097,10 +1184,13 @@
 
         <div class="experience-card">
           <div class="experience-header">
-            <div>
-              <div class="experience-role">Software Development Intern</div>
-              <div class="experience-org">Farm 2 Facts</div>
-              <div class="experience-location">Madison, Wisconsin &middot; Hybrid</div>
+            <div class="experience-left">
+              <img src="logo-f2f.png" alt="Farm 2 Facts" class="experience-logo" style="padding:0;object-fit:cover;">
+              <div>
+                <div class="experience-role">Software Development Intern</div>
+                <div class="experience-org">Farm 2 Facts</div>
+                <div class="experience-location">Madison, Wisconsin &middot; Hybrid</div>
+              </div>
             </div>
             <span class="experience-date">Oct 2024 &ndash; May 2025</span>
           </div>
@@ -1353,7 +1443,7 @@
 
         <!-- Lattice -->
         <div class="project-card">
-          <img src="lattice-logo.png" alt="Lattice Vector Search Engine" class="project-image project-image-transparent">
+          <img src="lattice-logo.svg" alt="Lattice Vector Search Engine" class="project-image project-image-transparent">
           <div class="project-body">
             <span class="project-type">Systems</span>
             <h3 class="project-name">Lattice</h3>
@@ -1367,6 +1457,29 @@
             </div>
             <div class="project-links">
               <a class="project-link" href="https://github.com/shrivasshankar/Lattice" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Spruce -->
+        <div class="project-card">
+          <img src="spruce-logo.svg" alt="Spruce LSM-Tree Storage Engine" class="project-image project-image-transparent">
+          <div class="project-body">
+            <span class="project-type">Systems</span>
+            <h3 class="project-name">Spruce</h3>
+            <p class="project-desc">
+              LSM-tree storage engine in C++20 with Vertiorizon compaction, Bloom filters, WAL crash recovery, and read/write amplification benchmarks.
+            </p>
+            <div class="project-tech">
+              <span class="tech-tag">C++20</span>
+              <span class="tech-tag">LSM-Tree</span>
+              <span class="tech-tag">CMake</span>
+            </div>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/shrivasshankar/Spruce" target="_blank" rel="noopener noreferrer">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                 GitHub
               </a>
@@ -1505,6 +1618,28 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    const scrollProgress = document.getElementById('scrollProgress');
+
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const scrollable = doc.scrollHeight - doc.clientHeight;
+      scrollProgress.style.width = scrollable > 0 ? (doc.scrollTop / scrollable * 100) + '%' : '0';
+    }, { passive: true });
+
+    const navAnchors = document.querySelectorAll('.nav-links a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
   </script>
 
 </body>
