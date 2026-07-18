@@ -10,9 +10,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shrivas Shankar | Portfolio</title>
+  <meta name="description" content="Shrivas Shankar - CS + Data Science at UW-Madison. Systems programming in C++, open-source contributor to Apache Arrow and llama.cpp.">
+  <meta property="og:title" content="Shrivas Shankar | Portfolio">
+  <meta property="og:description" content="CS + Data Science at UW-Madison. Systems programming in C++, open-source contributor to Apache Arrow and llama.cpp.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shrivasshankar.github.io/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <style>
     *, *::before, *::after {
@@ -35,7 +40,7 @@
       --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
       --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
       --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
-      --radius: 12px;
+      --radius: 6px;
       --mono: 'JetBrains Mono', monospace;
       --nav-bg: rgba(250, 250, 250, 0.6);
       --glow: rgba(45, 106, 79, 0.1);
@@ -87,7 +92,7 @@
       left: 0;
       height: 2px;
       width: 0;
-      background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+      background: var(--accent);
       z-index: 1001;
     }
 
@@ -97,12 +102,23 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg-primary);
       color: var(--text-primary);
       line-height: 1.7;
       transition: background-color 0.4s ease, color 0.4s ease;
       overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(var(--border) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: -1;
     }
 
     /* ── Navigation ── */
@@ -125,7 +141,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 30px;
+      padding: 10px 30px;
     }
 
     .nav-logo {
@@ -156,26 +172,9 @@
       transition: color 0.2s ease;
     }
 
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0;
-      height: 2px;
-      border-radius: 2px;
-      background: var(--accent);
-      transition: width 0.25s ease;
-    }
-
     .nav-links a:hover,
     .nav-links a.active {
       color: var(--accent);
-    }
-
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
-      width: 100%;
     }
 
     .theme-toggle {
@@ -254,19 +253,6 @@
       padding-top: 70px;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -10%;
-      right: -240px;
-      width: 820px;
-      height: 820px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--glow), transparent 62%);
-      filter: blur(100px);
-      pointer-events: none;
-    }
-
     .hero-content {
       position: relative;
       max-width: 700px;
@@ -281,15 +267,12 @@
     }
 
     .hero-name {
-      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-size: clamp(3rem, 7vw, 5.5rem);
       font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
+      letter-spacing: -0.05em;
+      line-height: 1.02;
       margin-bottom: 20px;
-      background: linear-gradient(120deg, var(--text-primary) 55%, var(--accent));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: var(--text-primary);
     }
 
     .hero-credentials {
@@ -301,7 +284,7 @@
     }
 
     .hero-desc {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       color: var(--text-secondary);
       max-width: 560px;
       line-height: 1.8;
@@ -319,7 +302,7 @@
       align-items: center;
       gap: 8px;
       padding: 10px 22px;
-      border-radius: 8px;
+      border-radius: var(--radius);
       font-size: 0.9rem;
       font-weight: 500;
       text-decoration: none;
@@ -327,14 +310,12 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+      background: var(--accent);
       color: #fff;
     }
 
     .btn-primary:hover {
       background: var(--accent-hover);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
     }
 
     .btn-outline {
@@ -346,7 +327,6 @@
     .btn-outline:hover {
       border-color: var(--accent);
       color: var(--accent);
-      transform: translateY(-1px);
     }
 
     /* ── About ── */
@@ -379,8 +359,6 @@
 
     .highlight-card:hover {
       border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
     }
 
     .highlight-number {
@@ -406,7 +384,7 @@
     }
 
     .education-card:hover {
-      box-shadow: var(--shadow-md);
+      border-color: var(--accent);
     }
 
     .edu-header {
@@ -469,24 +447,17 @@
     .coursework-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 0;
       margin-bottom: 28px;
     }
 
     .coursework-item {
       display: grid;
-      grid-template-columns: 72px 1fr;
+      grid-template-columns: 110px 1fr;
       gap: 12px;
       align-items: start;
-      padding: 14px 16px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      transition: border-color 0.2s ease;
-    }
-
-    .coursework-item:hover {
-      border-color: var(--accent);
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
     }
 
     .coursework-code {
@@ -543,20 +514,16 @@
     .experience-list {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 0;
     }
 
     .experience-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px;
-      transition: all 0.3s ease;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
     }
 
-    .experience-card:hover {
-      border-color: var(--accent);
-      box-shadow: var(--shadow-md);
+    .experience-card:last-child {
+      border-bottom: none;
     }
 
     .experience-header {
@@ -597,8 +564,12 @@
     }
 
     .experience-location {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       color: var(--text-muted);
-      font-size: 0.85rem;
+      margin-top: 2px;
     }
 
     .experience-date {
@@ -636,24 +607,14 @@
     .stack-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 16px 40px;
     }
 
     .stack-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px 24px;
       display: flex;
       align-items: center;
       gap: 12px;
-      transition: all 0.3s ease;
-    }
-
-    .stack-item:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+      padding: 8px 0;
     }
 
     .stack-item i {
@@ -688,6 +649,16 @@
       padding: 20px;
     }
 
+    .opensource-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .logo-dark { display: none; }
+    body.dark-mode .logo-dark { display: block; }
+    body.dark-mode .logo-light { display: none; }
+
     .opensource-card {
       display: flex;
       align-items: stretch;
@@ -700,7 +671,6 @@
 
     .opensource-card:hover {
       border-color: var(--accent);
-      box-shadow: var(--shadow-md);
     }
 
     .opensource-card-logo {
@@ -748,8 +718,6 @@
 
     .project-card:hover {
       border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg), 0 0 24px var(--accent-light);
     }
 
     .project-image {
@@ -809,13 +777,22 @@
       margin-bottom: 16px;
     }
 
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin-bottom: 16px;
+    }
+
     .tech-tag {
-      font-size: 0.72rem;
-      font-weight: 500;
-      padding: 3px 10px;
-      border-radius: 4px;
-      background: var(--accent-light);
-      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .tech-tag:not(:last-child)::after {
+      content: '\00a0\00b7\00a0';
     }
 
     .project-links {
@@ -881,8 +858,6 @@
     .contact-link:hover {
       border-color: var(--accent);
       color: var(--accent);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
     }
 
     .contact-link svg {
@@ -902,39 +877,12 @@
     /* ── Scroll animations ── */
     .fade-in {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transition: opacity 0.4s ease;
     }
 
     .fade-in.visible {
       opacity: 1;
-      transform: translateY(0);
     }
-
-    @keyframes rise {
-      from {
-        opacity: 0;
-        transform: translateY(14px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in.visible :is(.stack-item, .project-card, .experience-card, .opensource-card) {
-      animation: rise 0.45s ease backwards;
-    }
-
-    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(2) { animation-delay: 0.06s; }
-    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(3) { animation-delay: 0.12s; }
-    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(4) { animation-delay: 0.18s; }
-    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(5) { animation-delay: 0.24s; }
-    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(6) { animation-delay: 0.3s; }
-    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(7) { animation-delay: 0.36s; }
-    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(8) { animation-delay: 0.42s; }
-    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(9) { animation-delay: 0.48s; }
-    .fade-in.visible :is(.stack-item, .project-card, .experience-card):nth-child(10) { animation-delay: 0.54s; }
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
@@ -960,7 +908,7 @@
       }
 
       .hero-name {
-        font-size: 2.2rem;
+        font-size: 2.6rem;
       }
 
       .section {
@@ -1005,6 +953,15 @@
       }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+      .fade-in { opacity: 1; transform: none; }
+    }
+
     @media (max-width: 480px) {
       .about-highlights {
         grid-template-columns: 1fr;
@@ -1030,9 +987,7 @@
     <div class="nav-inner">
       <a href="#" class="nav-logo">shrivas<span>.</span></a>
       <div class="nav-links" id="navLinks">
-        <a href="#stack">Stack</a>
         <a href="#experience">Experience</a>
-        <a href="#coursework">Coursework</a>
         <a href="#opensource">Open Source</a>
         <a href="#research">Research</a>
         <a href="#projects">Projects</a>
@@ -1355,6 +1310,28 @@
     <div class="fade-in">
       <p class="section-label">04 / open source</p>
       <h2 class="section-title">Open Source</h2>
+      <div class="opensource-list">
+
+      <div class="opensource-card">
+        <div class="opensource-card-logo">
+          <img src="arrow-logo.png" alt="Apache Arrow" class="logo-light">
+          <img src="arrow-logo-dark.png" alt="Apache Arrow" class="logo-dark">
+        </div>
+        <div class="opensource-card-body">
+          <span class="project-type">apache/arrow &middot; Merged</span>
+          <h3 class="project-name">Apache Arrow</h3>
+          <p class="project-desc">
+            <code style="font-family:var(--mono);font-size:0.85em;">hypot</code> compute kernel &mdash; overflow-safe Euclidean distance for float32/float64 in C++ with PyArrow bindings, merged into main.
+          </p>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/apache/arrow/pull/50198" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              View PR
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div class="opensource-card">
         <div class="opensource-card-logo">
           <img src="llama-cpp-logo.png" alt="llama.cpp">
@@ -1372,6 +1349,8 @@
             </a>
           </div>
         </div>
+      </div>
+
       </div>
     </div>
   </section>
